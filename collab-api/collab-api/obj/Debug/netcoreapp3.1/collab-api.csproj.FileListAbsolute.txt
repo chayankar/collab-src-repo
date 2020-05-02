@@ -1,0 +1,9 @@
+C:\Chayan\Work\Source\collab-api\collab-api\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Chayan\Work\Source\collab-api\collab-api\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Chayan\Work\Source\collab-api\collab-api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\collab-api.csprojAssemblyReference.cache
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\staticwebassets\collab-api.StaticWebAssets.Manifest.cache
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\staticwebassets\collab-api.StaticWebAssets.xml
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\collab-api.AssemblyInfoInputs.cache
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\collab-api.AssemblyInfo.cs
+C:\Chayan\Work\Source\collab-api\collab-api\obj\Debug\netcoreapp3.1\collab-api.RazorTargetAssemblyInfo.cache

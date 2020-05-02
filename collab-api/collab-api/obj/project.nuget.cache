@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5QjKougnzNcduZ+53EQYhPsEZINm+gcb7uE/Co68kbke9b1dtOh09faCbCwf7gls/Pen9af8+Wk8c/T6MCaRTg==",
+  "success": true,
+  "projectFilePath": "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\collab-api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\chakar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.9.10\\microsoft.visualstudio.azure.containers.tools.targets.1.9.10.nupkg.sha512"
+  ],
+  "logs": []
+}

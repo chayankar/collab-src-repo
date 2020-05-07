@@ -1,27 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AdminLayoutModule } from './admin-layout/admin-layout.module';
+import { ToastrModule } from "ngx-toastr";
 
-import { AppRoutes } from './app-routing.module';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
+
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routing';
 
-import {} from './admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+
 
 @NgModule({
-   declarations: [
-      AppComponent
-   ],
-   imports: [
-      BrowserModule,
-      AdminLayoutModule,
-      RouterModule.forRoot(AppRoutes, {
-         useHash: true
-       })
-   ],
-   providers: [],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent
+  ],
+  imports: [
+    BrowserAnimationsModule,
+    RouterModule.forRoot(AppRoutes,{
+      useHash: true
+    }),
+    SidebarModule,
+    NavbarModule,
+    ToastrModule.forRoot(),
+    FooterModule,
+    FixedPluginModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

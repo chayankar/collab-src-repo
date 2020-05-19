@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\collab-api.csproj": {}
+    "C:\\Chayan\\Work\\collab-src-repo\\collab-api\\collab-api\\collab-api.csproj": {}
   },
   "projects": {
-    "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\collab-api.csproj": {
+    "C:\\Chayan\\Work\\collab-src-repo\\collab-api\\collab-api\\collab-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\collab-api.csproj",
+        "projectUniqueName": "C:\\Chayan\\Work\\collab-src-repo\\collab-api\\collab-api\\collab-api.csproj",
         "projectName": "collab-api",
-        "projectPath": "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\collab-api.csproj",
+        "projectPath": "C:\\Chayan\\Work\\collab-src-repo\\collab-api\\collab-api\\collab-api.csproj",
         "packagesPath": "C:\\Users\\chakar\\.nuget\\packages\\",
-        "outputPath": "C:\\Chayan\\Work\\Source\\collab-api\\collab-api\\obj\\",
+        "outputPath": "C:\\Chayan\\Work\\collab-src-repo\\collab-api\\collab-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,8 +1,10 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { UserRegistrationModule } from './user-registration/user-registration.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from "ngx-toastr";
+import { ToastrModule } from 'ngx-toastr';
 
+import { LoginModule } from './login/login.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
@@ -13,7 +15,6 @@ import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +22,15 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   ],
   imports: [
     BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes,{
-      useHash: true
-    }),
+    RouterModule.forRoot(AppRoutes),
+
+    LoginModule,
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    UserRegistrationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

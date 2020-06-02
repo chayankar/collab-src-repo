@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Chayan\\Work\\Source\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj": {}
+    "C:\\Chayan\\Work\\collab-src-repo\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj": {}
   },
   "projects": {
-    "C:\\Chayan\\Work\\Source\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj": {
+    "C:\\Chayan\\Work\\collab-src-repo\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Chayan\\Work\\Source\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj",
+        "projectUniqueName": "C:\\Chayan\\Work\\collab-src-repo\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj",
         "projectName": "collab-auth-api",
-        "projectPath": "C:\\Chayan\\Work\\Source\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj",
+        "projectPath": "C:\\Chayan\\Work\\collab-src-repo\\collab-auth-api\\collab-auth-api\\collab-auth-api.csproj",
         "packagesPath": "C:\\Users\\chakar\\.nuget\\packages\\",
-        "outputPath": "C:\\Chayan\\Work\\Source\\collab-auth-api\\collab-auth-api\\obj\\",
+        "outputPath": "C:\\Chayan\\Work\\collab-src-repo\\collab-auth-api\\collab-auth-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -47,7 +47,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.3, )"
             }
           },
           "imports": [

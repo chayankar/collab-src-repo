@@ -14,25 +14,28 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthService } from './services/auth-service/auth.service';
+import * as CryptoJs from 'crypto-js';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes),
-
-    LoginModule,
-    SidebarModule,
-    NavbarModule,
-    ToastrModule.forRoot(),
-    FooterModule,
-    FixedPluginModule,
-    UserRegistrationModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      AdminLayoutComponent
+   ],
+   imports: [
+      BrowserAnimationsModule,
+      RouterModule.forRoot(AppRoutes),
+      LoginModule,
+      SidebarModule,
+      NavbarModule,
+      ToastrModule.forRoot(),
+      FooterModule,
+      FixedPluginModule,
+      UserRegistrationModule
+   ],
+   providers: [AuthService],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

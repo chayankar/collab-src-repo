@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRegistrationComponent } from './user-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UtilityService } from 'app/services/utility-service/utility.service';
 
 export const registerRoute: Routes = [
   { path: '',  component: UserRegistrationComponent }
@@ -15,6 +16,7 @@ export const registerRoute: Routes = [
     RouterModule.forChild(registerRoute)
   ],
   declarations: [UserRegistrationComponent],
-  exports: [UserRegistrationComponent]
+  exports: [UserRegistrationComponent],
+  providers: [UtilityService]
 })
 export class UserRegistrationModule { }

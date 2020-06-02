@@ -1,31 +1,56 @@
-﻿using collab_auth_api.Entitties;
+﻿using collab_auth_api.Models;
 using collab_auth_api.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace collab_auth_api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
-        ILoginService loginService;
+        IUserAuthenticationService loginService;
+        IEncryptionService encryptionSvc;
 
-        public LoginController(ILoginService loginService)
+        public LoginController(IUserAuthenticationService authSvc, IEncryptionService encryptionSvc)
         {
-            this.loginService = loginService;
+            this.loginService = authSvc;
+            this.encryptionSvc = encryptionSvc;
         }
 
-        [AllowAnonymous]
-        [HttpPost()]
-        public IActionResult Authenticate([FromBody] LoginCred cred)
+        [HttpPost("api/Login")]
+        public ActionResult Authenticate([FromBody] LoginCred cred)
         {
-            var token = loginService.Authenticate(cred.Username, cred.Password);
+            LoginResponse resp = new LoginResponse();
 
-            if (token == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+            try
+            {
+                cred.Password = encryptionSvc.Decipher(cred.Password);
 
-            return Ok(token);
+                var token = loginService.Authenticate(cred.Email, cred.Password);
+
+                if (token == null)
+                {
+                    resp.IsAuthenticated = false;
+                    resp.Message = "Invalid login credentials";
+                    return new JsonResult(resp);
+                }
+                else
+                {
+                    resp.IsAuthenticated = true;
+                    resp.Message = "User authenticated";
+                    resp.Token = token;
+                    return new JsonResult(resp);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                resp.IsAuthenticated = false;
+                resp.Message = ex.Message;
+                return new JsonResult(resp);
+            }
         }
     }
 }

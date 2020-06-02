@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using collab_auth_api.Entitties;
+using collab_auth_api.Middleware;
+using collab_auth_api.Models;
 using collab_auth_api.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,9 +30,21 @@ namespace collab_auth_api
 
         public IConfiguration Configuration { get; }
 
+        private string corsPolicy = "allowSpecificOrigin";
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: corsPolicy, builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+                });
+            });
 
             AuthenticationBuilder authBuilder = services.AddAuthentication(x =>
               {
@@ -38,23 +52,24 @@ namespace collab_auth_api
                   x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
               });
 
-            authBuilder.AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                };
-            });
+            //authBuilder.AddJwtBearer(x =>
+            //{
+            //    x.RequireHttpsMetadata = false;
+            //    x.SaveToken = true;
+            //    x.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false,
+            //    };
+            //});
 
             var configSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(configSection);
 
-            services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IUserAuthenticationService, Services.AuthenticationService>();
+            services.AddScoped<IEncryptionService, AESEncyption>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,6 +82,8 @@ namespace collab_auth_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(corsPolicy);
 
             app.UseAuthentication();
 

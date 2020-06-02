@@ -1,6 +1,7 @@
 import { RegistrationFormModel } from './registration-model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { UtilityService } from 'app/services/utility-service/utility.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -11,11 +12,8 @@ export class UserRegistrationComponent implements OnInit {
 
   regModel: RegistrationFormModel;
   regForm: FormGroup;
-  phoneRegEx = '^((\\+91-?)|0)?[0-9]{10}$';
-  emailRegEx = '^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
-  strongPasswordRegEx: RegExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
 
-  constructor() {
+  constructor(private utilitySvc: UtilityService) {
     this.regModel = new RegistrationFormModel();
   }
 
@@ -26,8 +24,8 @@ export class UserRegistrationComponent implements OnInit {
   initRegistrationFormControls() {
     this.regForm = new FormGroup({
       name : new FormControl('', Validators.required),
-      phone: new FormControl('', [Validators.required, Validators.pattern(this.phoneRegEx)]),
-      email: new FormControl('', [Validators.required, Validators.pattern(this.emailRegEx)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(this.utilitySvc.phoneRegEx)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(this.utilitySvc.emailRegEx)]),
       password: new FormControl('', Validators.required),
       password_confirm: new FormControl('', Validators.required)
     });
@@ -37,7 +35,7 @@ export class UserRegistrationComponent implements OnInit {
     this.regForm.controls.password_confirm.valueChanges.subscribe(pwd_confirm => this.validatePasswordConfirmation(pwd_confirm));
   }
 
-  submitForm(regForm: FormGroup) {
+  submitForm() {
     console.log(this.regForm.controls.name.value + ' ' + this.regForm.controls.phone.value + ' ' + this.regForm.controls.email.value);
   }
 
@@ -46,7 +44,7 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   validatePasswordStrength(pwd) {
-    if (this.strongPasswordRegEx.test(pwd)) {
+    if (this.utilitySvc.strongPasswordRegEx.test(pwd)) {
       this.regForm.controls.password.setErrors(null);
     } else {
       this.regForm.controls.password.setErrors({'incorrect': true});

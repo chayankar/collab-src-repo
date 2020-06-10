@@ -17,11 +17,10 @@ export class HttpService {
 
   post(url: string, data: any) {
     url = this.getAbsoluteUrl(url);
-    return this.httpClient.post(url, data);
-   }
+    return this.httpClient.post(url, data, { withCredentials: true });
+  }
 
   private getAbsoluteUrl(url: string): string {
     return ServiceBaseUrl.AppBaseUrl + '/' + url;
   }
-
 }

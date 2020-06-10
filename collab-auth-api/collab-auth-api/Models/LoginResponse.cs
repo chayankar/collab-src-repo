@@ -13,7 +13,5 @@ namespace collab_auth_api.Models
         public string Message { get; set; }
 
         public bool IsAuthenticated { get; set; }
-
-        public string Token { get; set; }
     }
 }

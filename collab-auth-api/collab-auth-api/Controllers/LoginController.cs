@@ -1,10 +1,10 @@
-﻿using collab_auth_api.Models;
+﻿using collab_auth_api.Entitties;
+using collab_auth_api.Models;
 using collab_auth_api.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace collab_auth_api.Controllers
 {
@@ -13,15 +13,18 @@ namespace collab_auth_api.Controllers
     {
         IUserAuthenticationService loginService;
         IEncryptionService encryptionSvc;
+        ISecurityTokenService securityTokenSvc;
 
-        public LoginController(IUserAuthenticationService authSvc, IEncryptionService encryptionSvc)
+        public LoginController(IUserAuthenticationService authSvc, IEncryptionService encryptionSvc, ISecurityTokenService securityTokenSvc)
         {
             this.loginService = authSvc;
             this.encryptionSvc = encryptionSvc;
+            this.securityTokenSvc = securityTokenSvc;
         }
 
         [HttpPost("api/Login")]
-        public ActionResult Authenticate([FromBody] LoginCred cred)
+       
+        public IActionResult Authenticate([FromBody] LoginCred cred)
         {
             LoginResponse resp = new LoginResponse();
 
@@ -29,9 +32,9 @@ namespace collab_auth_api.Controllers
             {
                 cred.Password = encryptionSvc.Decipher(cred.Password);
 
-                var token = loginService.Authenticate(cred.Email, cred.Password);
+                User user = loginService.AuthenticateUser(cred.Email, cred.Password);
 
-                if (token == null)
+                if (user == null)
                 {
                     resp.IsAuthenticated = false;
                     resp.Message = "Invalid login credentials";
@@ -41,16 +44,25 @@ namespace collab_auth_api.Controllers
                 {
                     resp.IsAuthenticated = true;
                     resp.Message = "User authenticated";
-                    resp.Token = token;
-                    return new JsonResult(resp);
+                    // TODO: generate session id if session id is REALLY required in JWT !!!
+                    string authToken = securityTokenSvc.GenerateSecurityToken(user, "f9aec8e3-af07-4362-ae08-53ea16dbf2f0");
+                    this.HttpContext.Response.Cookies.Append("AuthToken", authToken, new CookieOptions()
+                    {
+                        HttpOnly = false,
+                        SameSite = SameSiteMode.Lax,
+                        Secure = false,
+                        Expires = new DateTimeOffset(DateTime.UtcNow.AddMinutes(30), TimeSpan.Zero)
+                    }); ;
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 resp.IsAuthenticated = false;
-                resp.Message = ex.Message;
-                return new JsonResult(resp);
+                resp.Message = "Internal server error";
             }
+
+            return new JsonResult(resp);
+
         }
     }
 }

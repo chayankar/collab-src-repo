@@ -10,10 +10,8 @@ export class AesEncryptionService {
   constructor() { }
 
   encrypt(encKey: EncryptionKey, data: string): string {
-    debugger;
-
-    const key = CryptoJs.enc.Utf8.parse('1234123456785678');
-    const iv = CryptoJs.enc.Utf8.parse('4566456678997899');
+    const key = CryptoJs.enc.Utf8.parse(encKey.key);
+    const iv = CryptoJs.enc.Utf8.parse(encKey.iv);
     const encData: string = CryptoJs.enc.Utf8.parse(data);
 
     return CryptoJs.AES.encrypt(encData, key,

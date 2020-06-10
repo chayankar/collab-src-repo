@@ -7,9 +7,10 @@ import { UtilityService } from 'app/services/utility-service/utility.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from 'app/services/http-service/http.service';
 import { AesEncryptionService } from 'app/services/encryption-service/aes-encryption.service';
+import { DashboardComponent } from 'app/pages/dashboard/dashboard.component';
 
 export const loginRoute: Routes = [
-  { path: '',  component: LoginComponent }
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

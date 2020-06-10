@@ -1,4 +1,4 @@
 export class EncryptionKey {
-    public Key: string;
-    public IV: string;
+    public key: string;
+    public iv: string;
 }

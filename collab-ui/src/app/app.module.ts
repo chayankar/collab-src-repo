@@ -16,6 +16,9 @@ import { AppRoutes } from './app.routing';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthService } from './services/auth-service/auth.service';
 import * as CryptoJs from 'crypto-js';
+import { CookieService } from 'ngx-cookie-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
 
 @NgModule({
    declarations: [
@@ -25,15 +28,18 @@ import * as CryptoJs from 'crypto-js';
    imports: [
       BrowserAnimationsModule,
       RouterModule.forRoot(AppRoutes),
-      LoginModule,
       SidebarModule,
       NavbarModule,
       ToastrModule.forRoot(),
       FooterModule,
       FixedPluginModule,
-      UserRegistrationModule
    ],
-   providers: [AuthService],
+   providers: [CookieService, AuthService,
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }],
    bootstrap: [
       AppComponent
    ]

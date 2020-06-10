@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 
 namespace collab_auth_api.Models
 {
-    public class AppSettings
+    public class JWTAuthConfig
     {
         public string JWTSecretKey { get; set; }
+
+        public string Issuer { get; set; }
+
+        public string Audience { get; set; }
     }
 }

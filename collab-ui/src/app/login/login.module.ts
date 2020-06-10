@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilityService } from 'app/services/utility-service/utility.service';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from 'app/services/http-service/http.service';
 import { AesEncryptionService } from 'app/services/encryption-service/aes-encryption.service';
 import { DashboardComponent } from 'app/pages/dashboard/dashboard.component';
@@ -16,7 +15,6 @@ export const loginRoute: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forChild(loginRoute)
   ],

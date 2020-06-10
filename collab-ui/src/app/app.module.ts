@@ -17,7 +17,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthService } from './services/auth-service/auth.service';
 import * as CryptoJs from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
 
 @NgModule({
@@ -28,6 +28,7 @@ import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
    imports: [
       BrowserAnimationsModule,
       RouterModule.forRoot(AppRoutes),
+      HttpClientModule,
       SidebarModule,
       NavbarModule,
       ToastrModule.forRoot(),

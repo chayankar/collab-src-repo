@@ -16,7 +16,7 @@ import { NotificationsComponent } from '../../pages/notifications/notifications.
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from 'app/interceptor/api-error/ApiErrorInterceptor';
 
 @NgModule({
@@ -24,8 +24,7 @@ import { ErrorInterceptor } from 'app/interceptor/api-error/ApiErrorInterceptor'
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule,
-    HttpClientModule
+    NgbModule
   ],
   declarations: [
     DashboardComponent,
@@ -37,11 +36,7 @@ import { ErrorInterceptor } from 'app/interceptor/api-error/ApiErrorInterceptor'
     MapsComponent,
     NotificationsComponent,
   ],
-  providers: [HttpService,   {
-    provide: HTTP_INTERCEPTORS,
-    useClass: ErrorInterceptor,
-    multi: true
-  }]
+  providers: [HttpService]
 })
 
 export class AdminLayoutModule { }

@@ -3,27 +3,27 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="login-wrapper my-auto">
-          <h1 class="login-title">Announce Yourself !!!</h1>
+          <h1 class="login-title">Register Yourself !!!</h1>
           <form [formGroup]="regForm" (ngSubmit)='submitForm()'>
             <div class="form-group">
               <label for="name">Name</label>
-              <input formControlName="name" ngOnChanges='captureChange()' type="name" name="name" id="name" class="form-control" placeholder="spell your name">
+              <input formControlName="name" ngOnChanges='captureChange()' type="name" name="name" id="name" class="form-control">
             </div>
             <div class="form-group">
               <label for="phone">Contact Number</label>
-              <input formControlName="phone" type="phone" name="phone" id="phone" class="form-control" placeholder="care to share your phone number ?">
+              <input formControlName="phone" type="phone" name="phone" id="phone" class="form-control">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input formControlName="email" type="email" name="email" id="email" class="form-control" placeholder="type your active email id">
+              <input formControlName="email" type="email" name="email" id="email" class="form-control">
             </div>
             <div class="form-group mb-4">
               <label for="password">Password</label>
-              <input formControlName="password" type="password" name="password" id="password" class="form-control" placeholder="your password better be THANOS strong">
+              <input formControlName="password" type="password" name="password" id="password" class="form-control">
             </div>
             <div class="form-group mb-4">
               <label for="password_confirm">Re-enter Password</label>
-              <input formControlName="password_confirm" type="password" name="password_confirm" id="password_confirm" class="form-control" placeholder="just to confirm, type again">
+              <input formControlName="password_confirm" type="password" name="password_confirm" id="password_confirm" class="form-control">
             </div>
             <input [disabled]="!regForm.valid" name="register" id="register" class="btn btn-block login-btn" type="submit" value="Submit">
           </form>

@@ -5,8 +5,11 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { RouteGuardService } from './services/route-guard/route-guard.service';
 
 export const AppRoutes: Routes = [
-  { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'register', loadChildren: './user-registration/user-registration.module#UserRegistrationModule'},
+  { path: 'login', loadChildren: './login/login.module#LoginModule', canActivate: [RouteGuardService] },
+  {
+    path: 'register', loadChildren: './user-registration/user-registration.module#UserRegistrationModule',
+    canActivate: [RouteGuardService]
+  },
   // {
   //   path: '', component: AdminLayoutComponent, canActivate: [RouteGuardService],
   //   children: [

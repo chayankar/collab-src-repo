@@ -1,0 +1,23 @@
+<ngb-tabset [destroyOnHide]="false">
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>View</b></ng-template>
+    <ng-template ngbTabContent>
+      <app-view-inventory></app-view-inventory>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Add</b></ng-template> app-add-inventory
+    <ng-template ngbTabContent>
+      <app-add-inventory></app-add-inventory>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Import Excel</b></ng-template> app-add-inventory
+    <ng-template ngbTabContent>
+      <app-import-inventory></app-import-inventory>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Edit</b></ng-template>
+  </ngb-tab>
+</ngb-tabset>

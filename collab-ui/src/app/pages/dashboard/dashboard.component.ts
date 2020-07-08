@@ -23,9 +23,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.initGraph();
-    const loginCred = { email: 'chayan@gmail.com', password: '123' };
-    this.httpService.post('api/register/user', loginCred).subscribe(data => {
-    });
   }
 
   private initGraph() {

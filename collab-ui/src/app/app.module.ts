@@ -1,4 +1,3 @@
-import { UserRegistrationModule } from './user-registration/user-registration.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -19,6 +18,7 @@ import * as CryptoJs from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
    declarations: [
@@ -26,6 +26,7 @@ import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
       AdminLayoutComponent
    ],
    imports: [
+      BrowserModule,
       BrowserAnimationsModule,
       RouterModule.forRoot(AppRoutes),
       HttpClientModule,
@@ -33,7 +34,7 @@ import { ErrorInterceptor } from './interceptor/api-error/ApiErrorInterceptor';
       NavbarModule,
       ToastrModule.forRoot(),
       FooterModule,
-      FixedPluginModule,
+      FixedPluginModule
    ],
    providers: [CookieService, AuthService,
       {

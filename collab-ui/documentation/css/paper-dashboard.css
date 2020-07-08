@@ -6083,7 +6083,7 @@ fieldset[disabled]
 
 .input-group,
 .form-group {
-  margin-bottom: 10px;
+  margin-bottom: 5%;
   position: relative; }
   .input-group .form-control-static,
   .form-group .form-control-static {

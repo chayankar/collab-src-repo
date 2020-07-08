@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -6,13 +7,16 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
 
-  constructor(private cookieSvc: CookieService) { }
+  constructor(private cookieSvc: CookieService, private router: Router) { }
 
   public isAuthenticated(): boolean {
-    return true;
+    const cookie = this.cookieSvc.get('AuthToken');
+    return cookie ? true : false;
   }
 
+  // TODO: This is not the right place for logout
   logout() {
     this.cookieSvc.deleteAll();
+    this.router.navigate(['/']);
   }
 }

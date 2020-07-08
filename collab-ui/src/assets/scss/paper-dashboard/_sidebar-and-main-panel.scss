@@ -20,6 +20,11 @@
     z-index: 1030;
     border-right: 1px solid #ddd;
 
+    @media screen and (max-height: 450px) {
+        .sidebar-toggle {padding-top: 15px;}
+        .sidebar-toggle a {font-size: 18px;}
+      }
+
     .sidebar-wrapper{
         position: relative;
         height: calc(100vh - 75px);

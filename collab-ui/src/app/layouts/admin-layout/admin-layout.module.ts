@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
@@ -16,15 +17,18 @@ import { NotificationsComponent } from '../../pages/notifications/notifications.
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {  HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor } from 'app/interceptor/api-error/ApiErrorInterceptor';
+import { FeedComponent } from 'app/pages/feed/feed.component';
+import { InventoryComponent } from 'app/pages/inventory/inventory.component';
+import { ViewInventoryComponent } from 'app/pages/inventory/view-inventory/view-inventory.component';
+import { AddInventoryComponent } from 'app/pages/inventory/add-inventory/add-inventory.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule
+    ReactiveFormsModule,
+    NgbModule,
+    CommonModule
   ],
   declarations: [
     DashboardComponent,
@@ -35,6 +39,10 @@ import { ErrorInterceptor } from 'app/interceptor/api-error/ApiErrorInterceptor'
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+    FeedComponent,
+    InventoryComponent,
+    ViewInventoryComponent,
+    AddInventoryComponent
   ],
   providers: [HttpService]
 })

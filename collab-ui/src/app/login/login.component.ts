@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   initPasswordEncryptKey() {
-    this.httpService.get('api/encryptionKey').subscribe((data: EncryptionKey) => {
+    this.httpService.get('/encryptionKey').subscribe((data: EncryptionKey) => {
       this.encryptKey = data;
     });
   }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
     const encryptextPwd = this.encryptionSvc.encrypt(this.encryptKey, this.loginFormGrp.controls.password.value);
     const loginCred = { email: this.loginFormGrp.controls.email.value, password: encryptextPwd };
-    this.httpService.post('api/Login', loginCred).subscribe((data: LoginResponse) => {
+    this.httpService.post('/Login', loginCred).subscribe((data: LoginResponse) => {
       if (data.isAuthenticated) {
         this.router.navigate(['dashboard'])
       }

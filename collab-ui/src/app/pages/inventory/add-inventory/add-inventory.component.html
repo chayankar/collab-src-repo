@@ -1,0 +1,73 @@
+<div class="card card-user">
+  <div class="card-header">
+    <h5 class="card-title">Add Commodity</h5>
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="commodityForm" (ngSubmit)='saveCommodity()'>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Commodity Name</label>
+            <input formControlName="commodityName" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Commodity Type</label>
+            <select formControlName="commodityType" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of inventory.commodityType"
+                value="{{item}}">{{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Seller</label>
+            <select formControlName="seller" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of inventory.seller"
+                value="{{item}}">{{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Manufacturer</label>
+            <select formControlName="manufacturer" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of inventory.manufacturer"
+                value="{{item}}">{{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Unit</label>
+            <input formControlName="unit" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Price/Unit</label>
+            <input formControlName="pricePerUnit" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div style="margin-left: 15px;">
+          <button [disabled]="!commodityForm .valid" type="submit" class="btn btn-primary btn-block" type="submit" value="Submit">Save Details</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

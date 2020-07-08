@@ -1,0 +1,103 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-12">
+            <form [formGroup]="inventoryFilterForm" (ngSubmit)='applyFilter()'>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <label class="text-muted"><span>Product Name</span></label>
+                  <div class="form-group">
+                    <input formControlName="commodityName" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-2 px-1">
+                  <div class="form-group">
+                    <label>Commodity Type</label>
+                    <select formControlName="commodityType" class="form-control">
+                      <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of inventory.commodityType"
+                        value="{{item}}">{{item}}</option>
+                    </select>
+
+                  </div>
+                </div>
+                <div class="col-md-2 px-1">
+                  <div class="form-group">
+                    <div class="form-group">
+                      <label>Seller</label>
+                      <select formControlName="seller" class="form-control">
+                        <option *ngFor="let item of inventory.seller" value="{{item}}">{{item}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 px-1">
+                  <div class="form-group">
+                    <label>Manufacturer</label>
+                    <select formControlName="manufacturer" class="form-control">
+                      <option *ngFor="let item of inventory.manufacturer" value="{{item}}">{{item}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2 pl-1">
+                  <div class="form-group">
+                    <button type="submit" value="Submit" class="btn btn-primary btn-block"
+                      style="margin-top: 24px; padding: 13px 22px;">Filter</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>
+                Product Name
+              </th>
+              <th>
+                Product TYpe
+              </th>
+              <th>
+                Unit Present
+              </th>
+              <th>
+                Price/Unit
+              </th>
+              <th>
+                Product Seller
+              </th>
+              <th>
+                Manufacturer
+              </th>
+            </thead>
+
+            <tbody>
+              <tr
+                *ngFor="let item of commodityListVM | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                <td>{{item.productName}}</td>
+                <td>{{item.productType}}</td>
+                <td>{{item.unitPresent}}</td>
+                <td>{{item.pricePerUnit}}</td>
+                <td>{{item.productSeller}}</td>
+                <td>{{item.manufacturer}}</td>
+              </tr>
+            </tbody>
+
+          </table>
+          <ngb-pagination (pageChange)="onPageChange($event)" [(page)]="page" [maxSize]="7"
+            [collectionSize]="collectionSize" [directionLinks]="true"></ngb-pagination>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

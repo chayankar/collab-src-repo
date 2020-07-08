@@ -11,16 +11,16 @@ export class HttpService {
   constructor(private httpClient: HttpClient) { }
 
   get(url: string): Observable<any> {
-    url = this.getAbsoluteUrl(url);
+    url = this.createUrl(url);
     return this.httpClient.get(url);
   }
 
   post(url: string, data: any) {
-    url = this.getAbsoluteUrl(url);
+    url = this.createUrl(url);
     return this.httpClient.post(url, data, { withCredentials: true });
   }
 
-  private getAbsoluteUrl(url: string): string {
-    return ServiceBaseUrl.AppBaseUrl + '/' + url;
+  private createUrl(url: string): string {
+    return ServiceBaseUrl.AppBaseUrl + url;
   }
 }

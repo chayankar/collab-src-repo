@@ -1,7 +1,4 @@
-<div class="card card-user">
-  <div class="card-header">
-    <h5 class="card-title">Add Commodity</h5>
-  </div>
+<div class="card card-user" style="border-radius: 0px">
 
   <div class="card-body">
     <form [formGroup]="commodityForm" (ngSubmit)='saveCommodity()'>
@@ -63,8 +60,12 @@
         </div>
       </div>
       <div class="row">
-        <div style="margin-left: 15px;">
-          <button [disabled]="!commodityForm .valid" type="submit" class="btn btn-primary btn-block" type="submit" value="Submit">Save Details</button>
+        <div style="display: inline-block; margin-left: 15px;">
+          <button [disabled]="!commodityForm .valid" type="submit" class="btn btn-primary btn-block" type="submit"
+            value="Submit">Save</button>
+        </div>
+        <div style="display: inline-block; margin-left: 15px;">
+          <button class="btn btn-primary btn-block">Discard</button>
         </div>
       </div>
     </form>

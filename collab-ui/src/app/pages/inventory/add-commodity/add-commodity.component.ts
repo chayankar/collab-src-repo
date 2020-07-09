@@ -1,16 +1,14 @@
-import { Commodity } from './../inventory.model';
 import { Component, OnInit } from '@angular/core';
-import { InventoryService } from '../inventory.service';
-import { Inventory } from '../inventory.model';
+import { Inventory, Commodity } from '../inventory.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { InventoryService } from '../inventory.service';
 
 @Component({
-  selector: 'app-add-inventory',
-  templateUrl: './add-inventory.component.html',
-  styleUrls: ['./add-inventory.component.scss']
+  selector: 'app-add-commodity',
+  templateUrl: './add-commodity.component.html',
+  styleUrls: ['./add-commodity.component.scss']
 })
-export class AddInventoryComponent implements OnInit {
-
+export class AddCommodityComponent implements OnInit {
   public inventory: Inventory;
   public commodityList: Commodity[] = [];
   public commodityForm: FormGroup;
@@ -24,7 +22,7 @@ export class AddInventoryComponent implements OnInit {
       seller: new FormControl('', [Validators.required]),
       manufacturer: new FormControl('', [Validators.required]),
       unit: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
-      pricePerUnit: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+      pricePerUnit: new FormControl('', [Validators.required]),
     });
   }
 
@@ -32,6 +30,8 @@ export class AddInventoryComponent implements OnInit {
   }
 
   saveCommodity() {
+    debugger;
     // TODO: save entry in database. Update inventory list view after successfull saving using component interaction / event.
   }
+
 }

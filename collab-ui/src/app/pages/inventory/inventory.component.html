@@ -1,23 +1,36 @@
-<ngb-tabset [destroyOnHide]="false">
-  <ngb-tab>
+<ngb-tabset #tabSet [destroyOnHide]=true>
+
+  <ngb-tab id="viewTab">
     <ng-template ngbTabTitle><b>View</b></ng-template>
     <ng-template ngbTabContent>
-      <app-view-inventory></app-view-inventory>
+      <app-view-inventory [inventory]='inventory' (commodityEdit)="onCommodityEdit($event);"></app-view-inventory>
     </ng-template>
   </ngb-tab>
-  <ngb-tab>
-    <ng-template ngbTabTitle><b>Add</b></ng-template> app-add-inventory
+
+
+  <ngb-tab id="editTab">
+    <ng-template ngbTabTitle><b>Edit Commodity</b></ng-template>
     <ng-template ngbTabContent>
-      <app-add-inventory></app-add-inventory>
+      <app-edit-commodity [commodityType]='inventory.commodityType' [seller]='inventory.seller'
+        [manufacturer]='inventory.manufacturer' [commodity]='commodity'
+        (commodityEditFinished)="onCommodityEditFinished($event)" (commodityEditCancled)="onCommodityEditCancled()">
+      </app-edit-commodity>
     </ng-template>
   </ngb-tab>
-  <ngb-tab>
-    <ng-template ngbTabTitle><b>Import Excel</b></ng-template> app-add-inventory
+
+
+  <ngb-tab id="addTab">
+    <ng-template ngbTabTitle><b>Add Commodity</b></ng-template>
     <ng-template ngbTabContent>
-      <app-import-inventory></app-import-inventory>
+      <app-add-commodity></app-add-commodity>
     </ng-template>
   </ngb-tab>
-  <ngb-tab>
-    <ng-template ngbTabTitle><b>Edit</b></ng-template>
+
+  <ngb-tab id="importTab">
+    <ng-template ngbTabTitle><b>Import Inventory</b></ng-template> app-add-inventory
+    <ng-template ngbTabContent>
+      <app-import-commodity></app-import-commodity>
+    </ng-template>
   </ngb-tab>
+
 </ngb-tabset>

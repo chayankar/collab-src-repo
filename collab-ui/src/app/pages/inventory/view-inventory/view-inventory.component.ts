@@ -1,9 +1,8 @@
 import { Commodity } from './../inventory.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Inventory } from '../inventory.model';
 import { InventoryService } from '../inventory.service';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-view-inventory',
@@ -13,22 +12,26 @@ import { stringify } from 'querystring';
 })
 export class ViewInventoryComponent implements OnInit {
 
-  public inventory: Inventory = new Inventory();
   public inventoryFilterForm: FormGroup;
   public page: number;
   public pageSize: number;
   public collectionSize: number;
   public commodityListVM: Commodity[] = [];
+  public isEditRequested: boolean;
 
-  constructor(private inventorySvc: InventoryService) {
-    this.inventory = this.inventorySvc.getInventory();
-    Object.assign(this.commodityListVM, this.inventory.availableCommodity);
-    this.page = 1;
-    this.pageSize = 10;
-    this.collectionSize = this.inventory.availableCommodity.length;
+  @Input() inventory: Inventory;
+  @Output() commodityEdit = new EventEmitter<Commodity>();
+
+  constructor() {
   }
 
   ngOnInit() {
+    Object.assign(this.commodityListVM, this.inventory.availableCommodity);
+
+    this.page = 1;
+    this.pageSize = 10;
+    this.collectionSize = this.inventory.availableCommodity.length;
+
     this.initFilterControl();
   }
 
@@ -58,4 +61,9 @@ export class ViewInventoryComponent implements OnInit {
     this.page = event;
   }
 
+  edit(commodity: Commodity) {
+    const index = this.inventory.availableCommodity.findIndex(x => x.id === commodity.id);
+    this.inventory.availableCommodity[index] = commodity;
+    this.commodityEdit.emit(commodity);
+  }
 }

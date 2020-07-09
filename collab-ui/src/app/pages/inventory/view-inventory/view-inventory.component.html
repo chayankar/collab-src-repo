@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col-md-12">
-    <div class="card">
+    <div class="card" style="border-radius: 0px">
       <div class="card-header">
         <div class="row">
           <div class="col-md-12">
@@ -60,6 +60,9 @@
           <table class="table">
             <thead class=" text-primary">
               <th>
+                Action
+              </th>
+              <th>
                 Product Name
               </th>
               <th>
@@ -80,8 +83,15 @@
             </thead>
 
             <tbody>
-              <tr
-                *ngFor="let item of commodityListVM | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+              <tr *ngFor="let item of commodityListVM | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                <td>
+                  <div>
+                    <i (click)='edit(item)' class="nc-icon nc-ruler-pencil btn-outline-secondary mr-2"
+                      ngbTooltip="Edit detail" style="display: inline-block;margin-right: 20px;"></i>
+                    <i ngbTooltip="Delete entry" class="nc-icon nc-simple-remove" style="display: inline-block;"></i>
+                  </div>
+
+                </td>
                 <td>{{item.productName}}</td>
                 <td>{{item.productType}}</td>
                 <td>{{item.unitPresent}}</td>

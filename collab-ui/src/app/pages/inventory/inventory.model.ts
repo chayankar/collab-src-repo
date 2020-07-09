@@ -4,7 +4,7 @@ export class Inventory {
     public commodityType: string[];
     public manufacturer: string[];
     public availableCommodity: Commodity[];
-    
+
     constructor() {
         this.availableCommodity = [];
         this.commodityType = [];
@@ -14,6 +14,7 @@ export class Inventory {
 }
 
 export class Commodity {
+    public id: string;
     public productName: string;
     public productType: string;
     public unitPresent: number;

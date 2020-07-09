@@ -1,3 +1,4 @@
+import { ImportCommodityComponent } from './../../pages/inventory/import-commodity/import-commodity.component';
 import { HttpService } from 'app/services/http-service/http.service';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeedComponent } from 'app/pages/feed/feed.component';
 import { InventoryComponent } from 'app/pages/inventory/inventory.component';
 import { ViewInventoryComponent } from 'app/pages/inventory/view-inventory/view-inventory.component';
-import { AddInventoryComponent } from 'app/pages/inventory/add-inventory/add-inventory.component';
+import { EditCommodityComponent } from 'app/pages/inventory/edit-commodity/edit-commodity.component';
+import { AddCommodityComponent } from 'app/pages/inventory/add-commodity/add-commodity.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,9 @@ import { AddInventoryComponent } from 'app/pages/inventory/add-inventory/add-inv
     FeedComponent,
     InventoryComponent,
     ViewInventoryComponent,
-    AddInventoryComponent
+    EditCommodityComponent,
+    AddCommodityComponent,
+    ImportCommodityComponent
   ],
   providers: [HttpService]
 })

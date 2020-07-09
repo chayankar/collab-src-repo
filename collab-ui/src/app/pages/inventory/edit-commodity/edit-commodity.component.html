@@ -1,0 +1,111 @@
+<div *ngIf="!isEditModeEnabled">
+  <div class="card card-user" style="border-radius: 0px">
+    <div class="card-header">
+      <!-- <h5 class="card-title">Edit Profile</h5> -->
+      <div class="alert alert-info">
+        <span>To edit commodity details, select a record from view tab.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isEditModeEnabled" class="card card-user" style="border-radius: 0px;">
+  <div class="card-header">
+    <div style="display: inline-block;">
+      <!-- <button class="nc-icon nc-cloud-upload-94 btn-primary" [disabled]="!commodityEditForm.valid" (click)="saveEdit()"
+        style="font-size: x-large; display: inline-block; margin-left: 25px; vertical-align: sub;"></button>
+      <button class="nc-icon nc-simple-remove btn-primary" (click)='cancelEdit()'
+        style="font-size: x-large; display: inline-block; margin-left: 15px; vertical-align: sub;"></button> -->
+
+      <button class="btn btn-primary" [disabled]="!commodityEditForm.valid" (click)="saveEdit()"
+        style="display: inline-block;">Save</button>
+      <button class="btn btn-primary" (click)='cancelEdit()'
+        style="display: inline-block; margin-left: 15px;">Discard</button>
+
+    </div>
+
+    <!-- <div class="alert alert-info">
+      <span>Tab change restricted while editing commodity details.</span>
+    </div> -->
+
+    <!-- <div>
+      <button class="btn btn-primary" [disabled]="!commodityEditForm.valid" (click)="saveEdit()"
+        style="display: inline-block;">Save</button>
+      <button class="btn btn-primary" (click)='cancelEdit()' style="display: inline-block;">Discard</button>
+    </div> -->
+
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="commodityEditForm" (ngSubmit)='saveEdit()'>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Commodity Name</label>
+            <input formControlName="commodityName" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Commodity Type</label>
+            <select formControlName="commodityType" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of commodityType" value="{{item}}">
+                {{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Unit</label>
+            <input formControlName="unit" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Price/Unit</label>
+            <input formControlName="pricePerUnit" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Seller</label>
+            <select formControlName="seller" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of seller" value="{{item}}">
+                {{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 pr-1">
+          <div class="form-group">
+            <label>Manufacturer</label>
+            <select formControlName="manufacturer" class="form-control">
+              <option style="margin: 5px 5px; padding-bottom: 5px;" *ngFor="let item of manufacturer" value="{{item}}">
+                {{item}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- The below buttons are replaced by buttons at top -->
+      <!-- <div class="row">
+        <div style="margin-left: 15px;">
+          <button [disabled]="!commodityEditForm.valid" type="submit" class="btn btn-primary btn-block" type="submit"
+            value="Submit">Save Details</button>
+          <button [disabled]="!commodityEditForm.valid" class="btn btn-primary btn-block" (click)='cancelEdit()'
+            style="display: inline-block;">Cancel Edit</button>
+        </div>
+      </div> -->
+    </form>
+  </div>
+
+</div>

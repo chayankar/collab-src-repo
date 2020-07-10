@@ -19,27 +19,27 @@ export class InventoryService {
     for (let index = 0; index < 10; index++) {
       const commodity: Commodity = {
         id: index.toString(),
-        productName: 'Mustard Oil',
-        productType: 'Cooking Oil',
-        unitPresent: 20,
-        pricePerUnit: 100,
-        productSeller: 'Big Bazar',
-        manufacturer: 'Tata'
+        name: 'Mustard Oil',
+        type: 'Cooking Oil',
+        unit: 20,
+        price: 100,
+        seller: 'Big Bazar',
+        brand: 'Tata'
       };
-      inventory.availableCommodity.push(commodity);
+      inventory.availableCommodities.push(commodity);
     }
 
     for (let index = 11; index < 25; index++) {
-      const commodity = {
+      const commodity: Commodity = {
         id: index.toString(),
-        productName: 'Corriander Powder',
-        productType: 'Spices',
-        unitPresent: 20,
-        pricePerUnit: 100,
-        productSeller: 'Reliance Fresh',
-        manufacturer: 'Everest'
+        name: 'Corriander Powder',
+        type: 'Spices',
+        unit: 20,
+        price: 100,
+        seller: 'Reliance Fresh',
+        brand: 'Everest'
       };
-      inventory.availableCommodity.push(commodity);
+      inventory.availableCommodities.push(commodity);
     }
 
     inventory.seller.push('Big Bazar');
@@ -48,8 +48,8 @@ export class InventoryService {
     inventory.commodityType.push('Cooking Oil');
     inventory.commodityType.push('Spices');
 
-    inventory.manufacturer.push('Tata');
-    inventory.manufacturer.push('Everest');
+    inventory.brand.push('Tata');
+    inventory.brand.push('Everest');
 
     return inventory;
   }

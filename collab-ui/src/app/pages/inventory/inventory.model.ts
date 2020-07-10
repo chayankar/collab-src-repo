@@ -2,23 +2,31 @@ export class Inventory {
 
     public seller: string[];
     public commodityType: string[];
-    public manufacturer: string[];
-    public availableCommodity: Commodity[];
+    public brand: string[];
+    public availableCommodities: Commodity[];
 
     constructor() {
-        this.availableCommodity = [];
+        this.availableCommodities = [];
         this.commodityType = [];
         this.seller = [];
-        this.manufacturer = [];
+        this.brand = [];
     }
 }
 
 export class Commodity {
     public id: string;
-    public productName: string;
-    public productType: string;
-    public unitPresent: number;
-    public pricePerUnit: number;
-    public productSeller: string;
-    public manufacturer: string;
+    public name: string;
+    public type: string;
+    public unit: number;
+    public price: number;
+    public seller: string;
+    public brand: string;
+}
+
+export class CommodityExcelFormat {
+    public Name: string;
+    public Unit: number;
+    public Price: number;
+    public Brand: string;
+    public Seller: string;
 }

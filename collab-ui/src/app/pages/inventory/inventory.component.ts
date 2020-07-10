@@ -30,6 +30,9 @@ export class InventoryComponent implements OnInit {
   }
 
   onCommodityEdit(commodity: Commodity) {
+
+    debugger;
+
     this.disableTabChangeWithoutSaving();
 
     this.commodity = commodity;
@@ -50,13 +53,11 @@ export class InventoryComponent implements OnInit {
     });
   }
 
-
-
   // TODO: Rename to onCommodityEditFinish
   onCommodityEditFinished(updatedCommodity: Commodity) {
     this.isEditRequested = false;
-    const index = this.inventory.availableCommodity.findIndex(x => x.id === updatedCommodity.id);
-    this.inventory.availableCommodity[index] = updatedCommodity;
+    const index = this.inventory.availableCommodities.findIndex(x => x.id === updatedCommodity.id);
+    this.inventory.availableCommodities[index] = updatedCommodity;
     this.commodity = null;
     this.toggleTabDisable(false);
     this.tabSet.select('viewTab');

@@ -18,6 +18,7 @@ export class ViewInventoryComponent implements OnInit {
   public collectionSize: number;
   public commodityListVM: Commodity[] = [];
   public isEditRequested: boolean;
+  public isFilterRequested: boolean;
 
   @Input() inventory: Inventory;
   @Output() commodityEdit = new EventEmitter<Commodity>();
@@ -26,30 +27,30 @@ export class ViewInventoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    Object.assign(this.commodityListVM, this.inventory.availableCommodity);
+    Object.assign(this.commodityListVM, this.inventory.availableCommodities);
 
     this.page = 1;
     this.pageSize = 10;
-    this.collectionSize = this.inventory.availableCommodity.length;
+    this.collectionSize = this.inventory.availableCommodities.length;
 
     this.initFilterControl();
   }
 
   initFilterControl() {
     this.inventoryFilterForm = new FormGroup({
-      commodityName: new FormControl(''),
-      commodityType: new FormControl(''),
+      name: new FormControl(''),
+      type: new FormControl(''),
       seller: new FormControl(''),
-      manufacturer: new FormControl('')
+      brand: new FormControl('')
     });
   }
 
   applyFilter() {
-    this.commodityListVM = this.inventory.availableCommodity.filter(x => {
-      return x.productName.match(this.inventoryFilterForm.controls.commodityName.value) &&
-        x.productType.match(this.inventoryFilterForm.controls.commodityType.value) &&
-        x.productSeller.match(this.inventoryFilterForm.controls.seller.value) &&
-        x.productType.match(this.inventoryFilterForm.controls.manufacturer.value) != null;
+    this.commodityListVM = this.inventory.availableCommodities.filter(x => {
+      return x.name.match(this.inventoryFilterForm.controls.name.value) &&
+        x.type.match(this.inventoryFilterForm.controls.type.value) &&
+        x.seller.match(this.inventoryFilterForm.controls.seller.value) &&
+        x.brand.match(this.inventoryFilterForm.controls.brand.value) != null;
     });
 
     this.page = 1;
@@ -57,13 +58,21 @@ export class ViewInventoryComponent implements OnInit {
     this.collectionSize = this.commodityListVM.length;
   }
 
+  toggleFilter() {
+    if (this.isFilterRequested) {
+      this.isFilterRequested = false;
+    } else {
+      this.isFilterRequested = true;
+    }
+  }
+
   onPageChange(event) {
     this.page = event;
   }
 
   edit(commodity: Commodity) {
-    const index = this.inventory.availableCommodity.findIndex(x => x.id === commodity.id);
-    this.inventory.availableCommodity[index] = commodity;
+    const index = this.inventory.availableCommodities.findIndex(x => x.id === commodity.id);
+    this.inventory.availableCommodities[index] = commodity;
     this.commodityEdit.emit(commodity);
   }
 }

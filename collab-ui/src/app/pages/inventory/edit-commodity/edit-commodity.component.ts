@@ -12,7 +12,7 @@ export class EditCommodityComponent implements OnInit {
 
   @Input() commodityType: string[];
   @Input() seller: string[];
-  @Input() manufacturer: string[];
+  @Input() brand: string[];
   @Input() commodity: Commodity;
   @Output() commodityEditFinished = new EventEmitter<Commodity>();
   @Output() commodityEditCancled = new EventEmitter<Commodity>();
@@ -20,18 +20,19 @@ export class EditCommodityComponent implements OnInit {
   isEditModeEnabled = false;
 
   constructor() {
+
   }
 
   ngOnInit() {
     this.isEditModeEnabled = this.commodity ? true : false;
     if (this.commodity) {
       this.commodityEditForm = new FormGroup({
-        commodityName: new FormControl(this.commodity.productName, [Validators.required]),
-        commodityType: new FormControl(this.commodity.productType, [Validators.required]),
-        seller: new FormControl(this.commodity.productSeller, [Validators.required]),
-        manufacturer: new FormControl(this.commodity.manufacturer, [Validators.required]),
-        unit: new FormControl(this.commodity.unitPresent, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
-        pricePerUnit: new FormControl(this.commodity.pricePerUnit, [Validators.required]),
+        name: new FormControl(this.commodity.name, [Validators.required]),
+        type: new FormControl(this.commodity.type, [Validators.required]),
+        seller: new FormControl(this.commodity.seller, [Validators.required]),
+        brand: new FormControl(this.commodity.brand, [Validators.required]),
+        unit: new FormControl(this.commodity.unit, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+        price: new FormControl(this.commodity.price, [Validators.required]),
       });
     }
   }
@@ -40,12 +41,12 @@ export class EditCommodityComponent implements OnInit {
     debugger;
     const updatedCommodity: Commodity = {
       id: this.commodity.id,
-      productName: this.commodityEditForm.controls.commodityName.value,
-      productType: this.commodityEditForm.controls.commodityType.value,
-      productSeller: this.commodityEditForm.controls.seller.value,
-      manufacturer: this.commodityEditForm.controls.manufacturer.value,
-      unitPresent: this.commodityEditForm.controls.unit.value,
-      pricePerUnit: this.commodityEditForm.controls.pricePerUnit.value,
+      name: this.commodityEditForm.controls.commodityName.value,
+      type: this.commodityEditForm.controls.commodityType.value,
+      seller: this.commodityEditForm.controls.seller.value,
+      brand: this.commodityEditForm.controls.manufacturer.value,
+      unit: this.commodityEditForm.controls.unit.value,
+      price: this.commodityEditForm.controls.pricePerUnit.value,
     }
 
     this.commodityEditFinished.emit(updatedCommodity);

@@ -1,1 +1,9 @@
-<p>import-commodity works!</p>
+<div class="card card-user" style="border-radius: 0px;">
+    <div class="card-header">
+        <div style="display: inline-block;">
+            <input #fileInput type="file" accept=".xls, .xlsx" (change)="handleFileInput($event)" />
+            <button [disabled]='!isUploadedFileValid' class="btn btn-primary" style="margin-left: 15px;">Save</button>
+            <button class="btn btn-primary" style="margin-left: 15px;">Discard</button>
+        </div>
+    </div>
+</div>

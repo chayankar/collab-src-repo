@@ -17,12 +17,12 @@ export class AddCommodityComponent implements OnInit {
     this.inventory = this.inventorySvc.getInventory();
 
     this.commodityForm = new FormGroup({
-      commodityName: new FormControl('', [Validators.required]),
-      commodityType: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
       seller: new FormControl('', [Validators.required]),
-      manufacturer: new FormControl('', [Validators.required]),
+      brand: new FormControl('', [Validators.required]),
       unit: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
-      pricePerUnit: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
     });
   }
 

@@ -9,10 +9,10 @@
 
 
   <ngb-tab id="editTab">
-    <ng-template ngbTabTitle><b>Edit Commodity</b></ng-template>
+    <ng-template ngbTabTitle><b>Edit</b></ng-template>
     <ng-template ngbTabContent>
-      <app-edit-commodity [commodityType]='inventory.commodityType' [seller]='inventory.seller'
-        [manufacturer]='inventory.manufacturer' [commodity]='commodity'
+      <app-edit-commodity [commodityType]='inventory.commodityType'
+        [seller]='inventory.seller' [brand]='inventory.brand' [commodity]='commodity'
         (commodityEditFinished)="onCommodityEditFinished($event)" (commodityEditCancled)="onCommodityEditCancled()">
       </app-edit-commodity>
     </ng-template>
@@ -20,14 +20,14 @@
 
 
   <ngb-tab id="addTab">
-    <ng-template ngbTabTitle><b>Add Commodity</b></ng-template>
+    <ng-template ngbTabTitle><b>Add</b></ng-template>
     <ng-template ngbTabContent>
       <app-add-commodity></app-add-commodity>
     </ng-template>
   </ngb-tab>
 
   <ngb-tab id="importTab">
-    <ng-template ngbTabTitle><b>Import Inventory</b></ng-template> app-add-inventory
+    <ng-template ngbTabTitle><b>Import</b></ng-template> app-add-inventory
     <ng-template ngbTabContent>
       <app-import-commodity></app-import-commodity>
     </ng-template>

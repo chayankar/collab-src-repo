@@ -5,8 +5,7 @@ import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-commodity',
-  templateUrl: './edit-commodity.component.html',
-  styleUrls: ['./edit-commodity.component.scss']
+  templateUrl: './edit-commodity.component.html'
 })
 export class EditCommodityComponent implements OnInit {
 
@@ -33,6 +32,8 @@ export class EditCommodityComponent implements OnInit {
         brand: new FormControl(this.commodity.brand, [Validators.required]),
         unit: new FormControl(this.commodity.unit, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
         price: new FormControl(this.commodity.price, [Validators.required]),
+        quantity: new FormControl(this.commodity.quantity, [Validators.required]),
+        category: new FormControl(this.commodity.category, [Validators.required]),
       });
     }
   }
@@ -47,6 +48,8 @@ export class EditCommodityComponent implements OnInit {
       brand: this.commodityEditForm.controls.manufacturer.value,
       unit: this.commodityEditForm.controls.unit.value,
       price: this.commodityEditForm.controls.pricePerUnit.value,
+      quantity: this.commodityEditForm.controls.quantity.value,
+      category: this.commodityEditForm.controls.category.value,
     }
 
     this.commodityEditFinished.emit(updatedCommodity);

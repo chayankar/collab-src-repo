@@ -21,11 +21,16 @@ export class Commodity {
     public price: number;
     public seller: string;
     public brand: string;
+    public quantity: string;
+    public category: string;
 }
 
 export class CommodityExcelFormat {
     public Name: string;
+    public Category: string;
+    public Type: string;
     public Unit: number;
+    public Quantity: string;
     public Price: number;
     public Brand: string;
     public Seller: string;

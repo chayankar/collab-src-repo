@@ -24,7 +24,9 @@ export class InventoryService {
         unit: 20,
         price: 100,
         seller: 'Big Bazar',
-        brand: 'Tata'
+        brand: 'Tata',
+        quantity: '100 gm',
+        category: 'FMCG'
       };
       inventory.availableCommodities.push(commodity);
     }
@@ -37,7 +39,9 @@ export class InventoryService {
         unit: 20,
         price: 100,
         seller: 'Reliance Fresh',
-        brand: 'Everest'
+        brand: 'Everest',
+        quantity: '100 gm',
+        category: 'FMCG'
       };
       inventory.availableCommodities.push(commodity);
     }

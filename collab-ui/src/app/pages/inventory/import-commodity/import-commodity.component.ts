@@ -1,20 +1,23 @@
 import { Commodity, CommodityExcelFormat } from './../inventory.model';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import * as Excel from 'xlsx';
 import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-import-commodity',
-  templateUrl: './import-commodity.component.html',
-  styleUrls: ['./import-commodity.component.css']
+  templateUrl: './import-commodity.component.html'
 })
 export class ImportCommodityComponent implements OnInit {
 
-  isUploadedFileValid: boolean;
+  isFileUploaded: boolean;
   workbook: Excel.WorkBook;
   commodityList: Commodity[] = [];
-  @ViewChild('fileInput') fileInput: HTMLElement;
+  public page: number;
+  public pageSize: number;
+  public collectionSize: number;
+
+  @ViewChild('fileUpload') fileUpload: ElementRef;
 
   constructor() {
   }
@@ -22,8 +25,8 @@ export class ImportCommodityComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleFileInput(event) {
-    debugger;
+  handleFileUpload(event) {
+    // TODO: validate selected file
     const excelFile: File = event.target.files[0];
     this.readExcel(excelFile);
   }
@@ -31,8 +34,6 @@ export class ImportCommodityComponent implements OnInit {
   readExcel(excelFile: File) {
     const readFile = new FileReader();
     readFile.onload = (e) => {
-      debugger;
-
       const rawData: any = readFile.result;
       const encodedData = new Uint8Array(rawData);
       const arr = new Array();
@@ -56,7 +57,7 @@ export class ImportCommodityComponent implements OnInit {
       const range = Excel.utils.decode_range(sheet['!ref']);
 
       const commodities: CommodityExcelFormat[] = Excel.utils.sheet_to_json<CommodityExcelFormat>(sheet);
-
+      debugger;
       for (let index = 0; index < commodities.length; index++) {
         const commodity: Commodity = new Commodity();
         commodity.name = commodities[index].Name;
@@ -64,11 +65,32 @@ export class ImportCommodityComponent implements OnInit {
         commodity.unit = commodities[index].Unit;
         commodity.seller = commodities[index].Seller;
         commodity.brand = commodities[index].Brand;
-        commodity.type = sheetName;
+        commodity.type = commodities[index].Type;
+        commodity.category = commodities[index].Category;
+        commodity.quantity = commodities[index].Quantity;
 
         this.commodityList.push(commodity);
       }
-      debugger;
     });
+
+    this.page = 1;
+    this.pageSize = 10;
+    this.collectionSize = this.commodityList.length;
+    this.isFileUploaded = true;
+  }
+
+  onPageChange(event) {
+    this.page = event;
+  }
+
+  saveCommodities() {
+    // TODO: save commodities in db
+  }
+
+  discardUpload() {
+    this.fileUpload.nativeElement.value = null;
+    this.isFileUploaded = false;
+    this.workbook = null;
+    this.commodityList = null;
   }
 }

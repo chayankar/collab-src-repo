@@ -1,9 +1,70 @@
 <div class="card card-user" style="border-radius: 0px;">
     <div class="card-header">
-        <div style="display: inline-block;">
-            <input #fileInput type="file" accept=".xls, .xlsx" (change)="handleFileInput($event)" />
-            <button [disabled]='!isUploadedFileValid' class="btn btn-primary" style="margin-left: 15px;">Save</button>
-            <button class="btn btn-primary" style="margin-left: 15px;">Discard</button>
+
+        <div class="alert alert-info">
+            <p style="display: inline-block; margin-right: 10px; margin-bottom: 0px;">Upload excel to add items in
+                inventory: </p>
+            <input #fileUpload style="display: inline-block;" type="file" accept=".xls, .xlsx"
+                (change)="handleFileUpload($event)">
         </div>
+    </div>
+
+    <div *ngIf="isFileUploaded" class="card-body">
+
+        <ngb-pagination (pageChange)="onPageChange($event)" [(page)]="page" [maxSize]="7"
+            [collectionSize]="collectionSize" [directionLinks]="true"></ngb-pagination>
+
+        <div class="table-responsive" style="height:500px;overflow:auto;">
+            <table class="table">
+                
+                <thead class=" text-primary">
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Price in Rupees
+                    </th>
+                  
+                    <th>
+                        Brand
+                    </th>
+                </thead>
+
+                <tbody>
+                    <tr
+                        *ngFor="let item of commodityList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                        <td>{{item.name}}</td>
+                        <td>{{item.type}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.brand}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <ngb-pagination (pageChange)="onPageChange($event)" [(page)]="page" [maxSize]="7"
+            [collectionSize]="collectionSize" [directionLinks]="true"></ngb-pagination>
+
+        <div class="row">
+            <div style="display: inline-block; margin-left: 15px;">
+                <button class="btn btn-primary btn-block" (click)='saveCommodities()'>Save</button>
+            </div>
+            <div style="display: inline-block; margin-left: 15px;">
+                <button class="btn btn-primary btn-block" (click)='discardUpload()'>Discard</button>
+            </div>
+        </div>
+
     </div>
 </div>

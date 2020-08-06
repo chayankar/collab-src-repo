@@ -7,7 +7,6 @@ import { InventoryService } from '../inventory.service';
 @Component({
   selector: 'app-view-inventory',
   templateUrl: './view-inventory.component.html',
-  styleUrls: ['./view-inventory.component.scss'],
   providers: [InventoryService]
 })
 export class ViewInventoryComponent implements OnInit {

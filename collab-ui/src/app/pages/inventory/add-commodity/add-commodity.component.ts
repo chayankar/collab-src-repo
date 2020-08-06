@@ -5,8 +5,7 @@ import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-add-commodity',
-  templateUrl: './add-commodity.component.html',
-  styleUrls: ['./add-commodity.component.scss']
+  templateUrl: './add-commodity.component.html'
 })
 export class AddCommodityComponent implements OnInit {
   public inventory: Inventory;

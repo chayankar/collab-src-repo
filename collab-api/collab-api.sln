@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "collab-api", "collab-api\collab-api.csproj", "{11AF8791-D8CF-40E0-9EFC-835D7AA4150F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "collab-api", "collab-api\collab-api.csproj", "{D6DDF8C7-6E2F-40A6-8415-1802E0A3E9E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11AF8791-D8CF-40E0-9EFC-835D7AA4150F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11AF8791-D8CF-40E0-9EFC-835D7AA4150F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11AF8791-D8CF-40E0-9EFC-835D7AA4150F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11AF8791-D8CF-40E0-9EFC-835D7AA4150F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6DDF8C7-6E2F-40A6-8415-1802E0A3E9E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DDF8C7-6E2F-40A6-8415-1802E0A3E9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DDF8C7-6E2F-40A6-8415-1802E0A3E9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DDF8C7-6E2F-40A6-8415-1802E0A3E9E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0D573804-A089-4125-BEC1-BDDA26067F9C}
+		SolutionGuid = {D065F102-29D6-4B5E-A2CE-97C22ACDB2DB}
 	EndGlobalSection
 EndGlobal
